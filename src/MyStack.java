@@ -1,4 +1,3 @@
-import sun.invoke.empty.Empty;
 
 import java.util.EmptyStackException;
 
@@ -8,7 +7,7 @@ public class MyStack {
         private T data;
         private StackNode<T> next;
 
-        public StackNode(T data) {
+        private StackNode(T data) {
             this.data = data;
         }
 
