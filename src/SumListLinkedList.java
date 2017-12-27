@@ -1,6 +1,6 @@
 public class SumListLinkedList {
 
-    public static int sumLists(ListNode head1, ListNode head2) {
+    public static int sumLists(LinkedListNode head1, LinkedListNode head2) {
         //7 -> 1 -> 6  = 617
         //5 -> 9 -> 2  = 295
 
@@ -9,8 +9,8 @@ public class SumListLinkedList {
         int sum = 0;
         int multiple = 1;
 
-        ListNode c1 = head1;
-        ListNode c2 = head2;
+        LinkedListNode c1 = head1;
+        LinkedListNode c2 = head2;
 
         while(c1 != null || c2 != null) {
 
@@ -68,11 +68,11 @@ public class SumListLinkedList {
     }
     //recursive
 
-//    public static LinkedListNode sumListsRecursive(LinkedListNode n1, LinkedListNode n2, int carry) {
+//    public static LinkedLinkedListNode sumListsRecursive(LinkedLinkedListNode n1, LinkedLinkedListNode n2, int carry) {
 //        if(n1 == null && n2 == null && carry == 0)
 //            return null;
 //
-//        LinkedListNode result = new LinkedListNode();
+//        LinkedLinkedListNode result = new LinkedLinkedListNode();
 //        int value = carry;
 //
 //        if(n1 != null) {
@@ -87,7 +87,7 @@ public class SumListLinkedList {
 //
 //        if(n1 != null || n2 != null) {
 //
-//            LinkedListNode more = (n1 == null ? null : n1.next, n2 == null ? null : n2.next, value >= 10 ? 1 : 0);
+//            LinkedLinkedListNode more = (n1 == null ? null : n1.next, n2 == null ? null : n2.next, value >= 10 ? 1 : 0);
 //            result.setNext(more);
 //        }
 //
@@ -95,21 +95,43 @@ public class SumListLinkedList {
 //    }
 //
 
+    public static LinkedListNode addListRecursively(LinkedListNode n1, LinkedListNode n2, int carry) {
+
+        if(n1 == null && n2 == null)
+            return null;
+        LinkedListNode newNode = new LinkedListNode();
+        int twoNumbersSumPlusCarry = carry;
+
+        if(n1 != null)
+            twoNumbersSumPlusCarry += n1.data;
+
+        if(n2 != null)
+            twoNumbersSumPlusCarry += n2.data;
+
+        newNode.data = twoNumbersSumPlusCarry % 10;
+        System.out.println("Data: " + newNode.data);
+
+        if(n1 != null || n2 != null) {
+            newNode.next = addListRecursively(n1 == null ? null : n1.next, n2 == null ? null : n2.next, twoNumbersSumPlusCarry >= 10 ? 1 : 0);
+        }
+        return newNode;
+    }
+
 
     public static void main(String[] args) {
-        ListNode n1 = new ListNode(7);
-        ListNode n2 = new ListNode(1);
-        ListNode n3 = new ListNode(6);
-        ListNode n4 = new ListNode(1);
+        LinkedListNode   n1 = new LinkedListNode(7);
+        LinkedListNode n2 = new LinkedListNode(1);
+        LinkedListNode n3 = new LinkedListNode(6);
+        //LinkedListNode n4 = new LinkedListNode(1);
 
-        ListNode y1 = new ListNode(5);
-        ListNode y2 = new ListNode(9);
-        ListNode y3 = new ListNode(2);
+        LinkedListNode y1 = new LinkedListNode(5);
+        LinkedListNode y2 = new LinkedListNode(9);
+        LinkedListNode y3 = new LinkedListNode(2);
 
-        ListNode q1 = new ListNode(9);
-        ListNode q2 = new ListNode(1);
-        ListNode p1 = new ListNode(1);
-        ListNode p2 = new ListNode(4);
+        LinkedListNode q1 = new LinkedListNode(9);
+        LinkedListNode q2 = new LinkedListNode(1);
+        LinkedListNode p1 = new LinkedListNode(1);
+        LinkedListNode p2 = new LinkedListNode(4);
 
         q1.next = q2;
         p1.next = p2;
@@ -122,8 +144,10 @@ public class SumListLinkedList {
         y1.next = y2;
         y2.next = y3;
 
-        System.out.println(sumLists(n1, y1));
+        //System.out.println(sumLists(n1, y1));
         //System.out.println(sumListsRecursive(n1, y1, 0));
-
+        LinkedListNode node = addListRecursively(n1, y1, 0);
+        
+        System.out.println(node.data);
     }
 }
