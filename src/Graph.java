@@ -2,14 +2,24 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Graph {
+    public static int MAX_VERTICES = 6;
+    private Node vertices[];
+    public int count;
+    public Graph() {
+        vertices = new Node[MAX_VERTICES];
+        count = 0;
+    }
 
-    private HashMap<Integer, Node> nodeLookup = new HashMap<Integer, Node>();
-
-    public static class Node {
-        private int id;
-        LinkedList<Node> adjacent = new LinkedList<Node>();
-        private Node(int id) {
-            this.id = id;
+    public void addNode(Node x) {
+        if (count < vertices.length) {
+            vertices[count] = x;
+            count++;
+        } else {
+            System.out.print("Graph full");
         }
+    }
+
+    public Node[] getNodes() {
+        return vertices;
     }
 }
