@@ -26,3 +26,8 @@ class Node {
         return vertex;
     }
 }
+
+/*
+gScannerMain.a5w?scr=sm&scantype=CU&scandistrict=ACW&scandid=14249;
+gScannerMain.a5w?scr=sm&scantype=CU&scandistrict=FON&scandid=14433;
+*/
