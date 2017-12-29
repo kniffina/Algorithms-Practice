@@ -39,15 +39,39 @@ public class RouteBetweenTwoNodes {
     //Given a directed graph, design an algorithm to find out whether
     //there is a route between 2 nodes
     public static boolean breadFirstSearch(Graph g, Node start, Node end) {
-        Queue<Node> q = new LinkedList<>();
+        Queue<Node> q = new LinkedList<Node>();
 
+        //set all nodes to unvisited
         for(Node n : g.getNodes()) {
             n.state = State.Unvisited;
         }
 
+        //set start state to Visiting because it is first in line
+        start.state = State.Visiting;
+        q.add(start);
 
-        return true;
+        while(!q.isEmpty()) {
+            //take the node at the front of the line
+            Node node = q.remove();
+
+            //check that node is there
+            if(node != null) {
+                //loop through the nodes adjacency list, adding them if they are not the end Node
+                for(Node u : node.getAdjacent()) {
+                    //check to make sure the state is Unvisited, otherwise it will result in an infinite loop
+                    if(u.state == State.Unvisited) {
+                        if (u == end) {
+                            return true; //found path to end node
+                        } else {
+                            u.state = State.Visiting;
+                            q.add(u);
+                        }
+                    }
+                }
+            }
+        }
+        //no path found so we can return false
+        return false;
     }
-
 
 }

@@ -5,6 +5,7 @@ class Node {
 
 
     public RouteBetweenTwoNodes.State state;
+
     public Node(String vertex, int adjacentLength) {
         this.vertex = vertex;
         adjacentCount = 0;
