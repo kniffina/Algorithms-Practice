@@ -20,6 +20,7 @@ public class MaxSumPathTree {
 
         System.out.println("Cumulative Value: " + nodeCumulativeValue);
         System.out.println();
+
         max[0] = Math.max(max[0], leftSum + root.data + rightSum);
 
         return nodeCumulativeValue;
