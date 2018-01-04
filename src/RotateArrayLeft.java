@@ -15,7 +15,7 @@ public class RotateArrayLeft {
         reverse(arr, 0, arr.length - actualShifts - 1);
 
 
-        reverse(arr, arr.length - actualShifts - 1, arr.length - 1);
+        reverse(arr, arr.length - actualShifts, arr.length - 1);
         return arr;
     }
 
@@ -39,5 +39,9 @@ public class RotateArrayLeft {
         int[] arr = {1, 2, 3, 4, 5};
 
         rotateLeft(arr, 2);
+
+        for(int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 }
