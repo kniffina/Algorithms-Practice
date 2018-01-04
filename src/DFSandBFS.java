@@ -40,5 +40,50 @@ public class DFSandBFS {
             }
         }
     }
+
+     //  *** BFS  *******
+    //visits 5 -> 3 -> 7 -> 2 -> 4 -> 6 -> 8
+    //      visits all children first then goes to next level
+    public static void breadth(TreeNode root) {
+        if (root == null)
+            return;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>() ;
+
+        queue.clear();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            TreeNode node = queue.remove();
+            System.out.print(node.data + " ");
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        TreeNode n2 = new TreeNode(2, null, null);
+        TreeNode n3 = new TreeNode(3, null, null);
+        TreeNode n4 = new TreeNode(4, null, null);
+        TreeNode n5 = new TreeNode(5, null, null);
+        TreeNode n6 = new TreeNode(6, null, null);
+        TreeNode n7 = new TreeNode(7, null, null);
+        TreeNode n8 = new TreeNode(8, null, null);
+        TreeNode n9 = new TreeNode(12, null, null);
+
+        TreeNode n15 = new TreeNode(15, null, null);
+        //left subtree
+        n5.left = n3;
+        n3.left = n2;
+        n3.right = n4;
+
+        n5.right = n7;
+        n7.left = n6;
+        n7.right = n8;
+        //n8.right = n9;
+        //n9.right = n15;
+
+        breadth(n5);
+        //System.out.println(isBST(n5));
+    }
     */
 }

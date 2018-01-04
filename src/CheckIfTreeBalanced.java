@@ -53,7 +53,7 @@ public class CheckIfTreeBalanced {
         n7.left = n6;
         n7.right = n8;
         n8.right = n9;
-        n9.right = n15;
+        //n9.right = n15;
 
 
         System.out.println(isBalanced(n5));
