@@ -4,6 +4,8 @@ public class LowestCommonAncestorBinaryTree {
         if(root == null)
             return null;
 
+        //if a root node is equal to the value of p or q, return
+        //  that node to the correct branch
         if(root == p || root == q)
             return root;
 
@@ -24,11 +26,22 @@ public class LowestCommonAncestorBinaryTree {
         TreeNode left = lowestAncestor(root.left, p, q);
         TreeNode right = lowestAncestor(root.right, p, q);
 
+        //if right subtree is null, then we traversed and never found
+        //   a node equal to p or q
+        if(right == null)
+            return left;
 
-        //5 is last value on the stack
-        System.out.print(root.data);
+        //if left == null we traversed and never found a node in the left
+        //  subtree equal to p or q
+        else if(left == null)
+            return right;
 
-        return root;
+        //return the root node because both are not null,
+        // i.e in other subtrees
+        else
+            return root;
+
+
     }
 
     public static void main(String[] args) {
