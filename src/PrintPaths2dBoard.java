@@ -29,7 +29,7 @@ public class PrintPaths2dBoard {
         sb.deleteCharAt(sb.length() - 1); //unmark
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         char[][] arr = {{'A', 'B'}, {'C', 'D'}};
 
         ArrayList<String> list = printPaths(arr);
